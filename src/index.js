@@ -10,10 +10,18 @@ const app = express();
 dotenv.config(); 
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ["https://food-mart-server-eight.vercel.app/"],
+  methods: ["POST", "GET", "PUT"],
+  credentials: true
+}));
 
 app.use("/auth",UserRouter);
 app.use("/recipes", RecipeRouter);
+
+app.get('/', (req,res)=>{
+  res.json("Server is up! Get recipe api by navigating to /recipes");
+})
 
 mongoose.connect(`mongodb+srv://food-wiki:${process.env.DB_PASS}@cluster0.rpxjdx4.mongodb.net/food-wiki`, {
   useNewUrlParser: true,
