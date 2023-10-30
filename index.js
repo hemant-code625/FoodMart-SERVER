@@ -11,7 +11,7 @@ dotenv.config();
 
 app.use(express.json());
 app.use(cors({
-  origin: ["https://foodmart-server.vercel.app"],
+  origin: ["https://food-mart-client.vercel.app"],
   methods: ["POST", "GET", "PUT"],
   credentials: true
 }));
